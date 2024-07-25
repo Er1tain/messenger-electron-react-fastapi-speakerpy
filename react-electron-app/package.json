@@ -1,0 +1,80 @@
+{
+  "name": "react-electron-app",
+  "productName": "react-electron-app",
+  "version": "1.0.0",
+  "description": "My Electron application description",
+  "main": "./index.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "eslint src --color",
+    "start-react": "cd ./app && npm start",
+    "electron": "concurrently \" npm run start-react\" \" npm run start \""
+  },
+  "keywords": [],
+  "author": "Alex",
+  "license": "MIT",
+  "config": {
+    "forge": {
+      "make_targets": {
+        "win32": [
+          "squirrel"
+        ],
+        "darwin": [
+          "zip"
+        ],
+        "linux": [
+          "deb",
+          "rpm"
+        ]
+      },
+      "electronPackagerConfig": {
+        "packageManager": "yarn"
+      },
+      "electronWinstallerConfig": {
+        "name": "react_electron_app"
+      },
+      "electronInstallerDebian": {},
+      "electronInstallerRedhat": {},
+      "github_repository": {
+        "owner": "",
+        "name": ""
+      },
+      "windowsStoreConfig": {
+        "packageName": "",
+        "name": "reactelectronapp"
+      }
+    }
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2",
+    "electron-compile": "^6.4.4",
+    "electron-squirrel-startup": "^1.0.1",
+    "styled-components": "^6.1.12"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "electron-builder": "^24.13.3",
+    "electron-forge": "^5.2.4",
+    "electron-prebuilt-compile": "8.2.0",
+    "eslint": "^3",
+    "eslint-config-airbnb": "^15",
+    "eslint-plugin-import": "^2",
+    "eslint-plugin-jsx-a11y": "^5",
+    "eslint-plugin-react": "^7"
+  },
+  "build": {
+    "appId": "com.example.myapp",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "public"
+    }
+  }
+}
